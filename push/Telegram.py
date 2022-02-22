@@ -9,9 +9,9 @@ def getKey(data):
     return (config['module'], config['userId'], config['botToken'])
 
 
-def push(title, mdmsg, mdmsg_compat, textmsg, config):
-    #deprecate str.replace() funciton since Telegram support ** syntax to bold text.
-    msg = mdmsg_compat # .replace('**', '*')
+def push(title, mdmsg, textmsg, config):
+    # deprecate str.replace() funciton since Telegram support ** syntax to bold text.
+    msg = mdmsg
     if len(config['userId']) == 0 or len(config['botToken']) == 0:
         return
 

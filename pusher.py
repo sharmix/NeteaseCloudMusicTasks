@@ -25,7 +25,7 @@ class Pusher():
         key = eval('{}.getKey(data)'.format(config['module']))
         if key is not None:
             if key in self.datas:
-                for syntax in ['mdmsg', 'mdmsg_compat', 'textmsg']:
+                for syntax in ['mdmsg', 'textmsg']:
                     self.datas[key][syntax] += self.separator
                     self.datas[key][syntax] += data[syntax]
             else:
@@ -33,5 +33,5 @@ class Pusher():
 
     def push(self):
         for data in self.datas.values():
-            exec('{}.push(data["title"], data["mdmsg"], data["mdmsg_compat"], data["textmsg"], data["config"])'.format(
+            exec('{}.push(data["title"], data["mdmsg"], data["textmsg"], data["config"])'.format(
                 data['config']['module']))
